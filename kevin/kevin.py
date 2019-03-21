@@ -1,0 +1,71 @@
+#!/usr/bin/python3
+
+from Crypto.Cipher import AES
+import os
+import time
+import pkg_resources
+import random
+import daemon
+import time
+from threading import Thread
+
+filee = 'korban.txt'#(str(input('nama file : ')))
+password = 'passwordpassword'#(str(input('password: ')))
+
+mode = AES.MODE_CBC
+iv = 'drowssapdrowssap'#None
+#for abc in range(16):
+# iv += chr(random.randint(0, 0xFF))
+
+def encrypt(password, fileee):
+ bagus = """ bisaw = (os.access(filee, os.W_OK))
+ bisar = (os.access(filee, os.R_OK))
+ if bisaw or bisar == False:
+  print('ga bisa akses file')
+  sys.exit()
+"""
+ global encc
+ with open(fileee, 'rb') as kevin:
+  text = kevin.read()
+  text = text.decode('utf-8')
+  null = 0
+  encc = []
+  pad = 16
+  """if len(eko) % 16 != 0:
+   while True:
+    if len(eko) % 16 == 0:
+     break
+    eko.append(100)"""
+  aes = AES.new(password, mode, iv)
+  lenn = len(list(text))
+  if lenn % 16 != 0:
+   while True:
+    if len(list(text)) % 16 == 0:
+     break
+    text += '\0'  
+ text = aes.encrypt(text)
+ os.system('rm korban.enc'), os.system('touch korban.enc')
+ with open('korban.enc', 'wb') as skara:
+ # text = text.encode('utf-8')
+  skara.write(text)
+
+ print(encc)
+
+def decrypt(mana):
+ dec = AES.new('passwordpassword', AES.MODE_CBC, 'drowssapdrowssap')
+ with open('korban.enc', 'rb') as pyth:
+  text = pyth.read()
+  print(type(text))
+#  text = text.decode('utf-8')
+  decc = dec.decrypt(text)
+  decc = decc.rstrip(b"\0")
+  with open('korban1.txt', 'wb') as decry:
+ #  oops = decc.encode('utf-8')
+   decry.write(decc)
+
+encrypt(password, filee)
+decrypt(encc)
+
+   
+   
+  
